@@ -16,6 +16,7 @@ public class DistributedChecker implements RMIInterface{
 	int agentId;
 	int[] pref;
 	int currPref = 0;
+	static int numMessages = 0;
 
 	String[] peers;
 	int[] ports;
@@ -42,17 +43,6 @@ public class DistributedChecker implements RMIInterface{
 		} 
 	}
 	
-	Request runRequest;
-	Response runResponse;
-	
-	public void setRunRequest(Request runRequest) {
-		this.runRequest = runRequest;
-	}
-	
-	public Response getRunResponse() {
-		return this.runResponse;
-	}
-	
 	public Map<Integer, House> start(Queue<Integer> q, Map<Integer, House> allocation) {
 		if(!q.isEmpty()) {
 			int nextId = q.poll();
@@ -74,6 +64,7 @@ public class DistributedChecker implements RMIInterface{
             Registry registry=LocateRegistry.getRegistry(this.ports[id]);
             stub=(RMIInterface) registry.lookup("Agent");
             if(rmi.equals("getAllocation")) {
+            	DistributedChecker.numMessages++;
                 callReply = stub.getAllocation(req);
                 return callReply;
             }
@@ -146,7 +137,7 @@ public class DistributedChecker implements RMIInterface{
 			Request nextRequest = new Request(q, allocation);
 			Response response = this.Call("getAllocation", nextRequest, nextId);
 			if(response == null ) {
-				//TODO: ???
+				//this will never happen in the problem statement
 			}
 			allocation = response.allocation;
 			q = response.queue;

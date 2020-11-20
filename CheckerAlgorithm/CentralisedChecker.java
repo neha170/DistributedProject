@@ -17,18 +17,14 @@ public class CentralisedChecker implements RMIInterface{
 	int agentId;
 	int[] pref;
 	int currPref = 0;
+	static int numMessages = 0;
 
 	String[] peers;
 	int[] ports;
 	RMIInterface stub;
 	Registry registry;
 	
-	//for checker process
-	boolean isChecker = false;
-	int numAgent;
-	int numHouse;	
-	
-	public CentralisedChecker(int[] pref, int id, boolean isChecker, int numAgent, int numHouse, String[] peers, int[] ports) {
+	public CentralisedChecker(int[] pref, int id, String[] peers, int[] ports) {
 		this.pref = pref;
 		this.agentId = id;
 		this.peers = peers;
@@ -43,12 +39,6 @@ public class CentralisedChecker implements RMIInterface{
 		catch (RemoteException e) {
 			e.printStackTrace();
 		} 
-
-		this.isChecker = isChecker;
-		if(isChecker) {
-			this.numAgent = numAgent;
-			this.numHouse = numHouse;
-		}
 	}
 	
 	public Response Call(String rmi, Request req, int id){
@@ -59,6 +49,7 @@ public class CentralisedChecker implements RMIInterface{
             Registry registry=LocateRegistry.getRegistry(this.ports[id]);
             stub=(RMIInterface) registry.lookup("Agent");
             if(rmi.equals("getPref")) {
+            	CentralisedChecker.numMessages++;
                 callReply = stub.getPref();
             }
             else
@@ -100,7 +91,7 @@ public class CentralisedChecker implements RMIInterface{
 			Response response = Call("getPref", null, nextId);
 			if(response == null) {
 				//this agent has exhausted all preferences
-				continue; //TODO: fix this
+				continue; //this will never happen
 			}
 			for(Integer key: allocation.keySet()) {
 				House h = allocation.get(key);
