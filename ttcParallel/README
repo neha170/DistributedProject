@@ -4,5 +4,5 @@ This is a parallel implementation of the algorithm proposed by Xiong Zheng and V
 Their paper can be accessed at 'Parallel and Distributed Algorithms for the Housing Allocation Problem, 2019.'
 This implementation uses the deterministic way of labelling an agent as active or not.
 Details of this algorithm can be found at 'Richard Cole and Uzi Vishkin. Deterministic coin tossing with applications to optimal parallel list ranking. Information and Control,70(1):32–53, 1986'.
-To run the algorithm, use the main() function in Main.java. Many examples are provided, which can be run from the main() function.
+To run the algorithm, use the main() function in Main.java. Many examples are provided, which can be run from the main() function. Please change the numAgents variable accordingly.
 The output shows the house allocated to each agent.
