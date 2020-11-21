@@ -1,1 +1,8 @@
-
+This code gives the JAVA implementation of the Checker algorithm.
+The implementation is in a distributed setting where each agent is running on a separate machine. The agents don't share any memory and can only communicate with
+each other through messages (implemented using JAVA RMI Interface).
+There are two versions of the algorithm, centralised and distributed.
+In the centralisedChecker, there is a special checker process.
+In the distributedChecker, each agent becomes the checker process, whenever required by the algorithm.
+To run the algorithm, use the main() function in Main.java. Many examples are provided, which can be run from the main() function.
+The output shows the house allocated to each agent, and the total number of messages exchanged in the system.
