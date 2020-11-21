@@ -4,5 +4,5 @@ each other through messages (implemented using JAVA RMI Interface).
 The algorithm was proposed by Xiong Zheng and Vijay Garg in 2019.
 Their paper can be accessed at 'Parallel and Distributed Algorithms for the Housing Allocation Problem, 2019.'
 This implementation uses the non deterministic way of labelling an agent as active or not.
-To run the algorithm, use the main() function in Main.java. Many examples are provided, which can be run from the main() function.
+To run the algorithm, use the main() function in Main.java. Many examples are provided, which can be run from the main() function. Please change the numAgents variable accordingly.
 The output shows the house allocated to each agent, and the total number of messages exchanged in the system.
