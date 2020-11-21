@@ -1,1 +1,8 @@
-
+This code gives the JAVA implementation of the Greedy Dictator algorithm given by Atila  Abdulkadiroglu  and  Tayfun  Sonmez in 1998.
+Their paper can be accessed at 'Random Serial Dictatorship and the Core from Random Endowments in House Allocation Problems.Econometrica, 66(3):689–701, 1998'.
+The implementation is in a distributed setting where each agent is running on a separae machine. The agents don't share any memory and can only communicate with
+each other through messages (implemented using JAVA RMI Interface).
+The total order in distributed system is implemented using Skeen's algorithm, 'D. R. Cheriton and D. Skeen. Understanding the limitations of causally and totally
+ordered communication.ACM Symp. on Operating SystemsPrinciples, 27(5):44–57, 1993.'
+To run the algorithm, use the main() function in Main.java. Many examples are provided, which can be run from the main() function.
+The output shows the house allocated to each agent, and the total number of messages exchanged in the system.
